@@ -1,0 +1,15 @@
+{
+  "name": "data-quality-highlighter",
+  "version": "1.0.0",
+  "description": "Demo of a rule-driven data quality highlighting feature: admin-defined formula rules, highlighted form fields, and a status API.",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "author": "Sarwat Farabee",
+  "license": "MIT"
+}

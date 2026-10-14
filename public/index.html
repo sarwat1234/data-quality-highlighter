@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Data Quality Highlighter (demo)</title>
+  <link rel="stylesheet" href="/public/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Data Quality Highlighter</h1>
+    <p>A demo of rule-driven field highlighting. All data is made up.</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Customer record</h2>
+      <label class="picker">Customer
+        <select id="customer"></select>
+      </label>
+      <div id="form"></div>
+      <div class="buttons">
+        <button id="check" class="primary">Check data quality</button>
+        <button id="save">Save</button>
+      </div>
+      <p id="message" class="message" role="status"></p>
+      <p class="hint">Rules only run when you press the check button. Fix a field, then press it again to see the highlight clear. Saving is never blocked.</p>
+    </section>
+
+    <section class="card">
+      <h2>Status API (saved record)</h2>
+      <p class="hint">What an approver would get back without opening the record.</p>
+      <button id="api">Check via API</button>
+      <pre id="api-result">Press the button to call GET /api/customers/&lt;id&gt;/check</pre>
+    </section>
+
+    <section class="card wide">
+      <h2>Admin: rules</h2>
+      <p class="hint">A rule fails when its formula returns true. Use field names, numbers, comparisons, &amp;&amp;, ||, ! and isBlank(field).</p>
+      <table id="rules">
+        <thead><tr><th>ID</th><th>Type</th><th>Formula</th><th>Description (tooltip)</th><th>Highlights</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <h3>Add a rule</h3>
+      <div class="rule-form">
+        <label>Formula <input id="r-formula" placeholder="e.g. netIncome > revenue"></label>
+        <label>Type
+          <select id="r-type"><option value="mandatory">mandatory</option><option value="desired">desired</option></select>
+        </label>
+        <label>Description <input id="r-desc" placeholder="Shown as the tooltip"></label>
+        <label>Highlight fields <input id="r-fields" placeholder="comma separated, e.g. netIncome, revenue"></label>
+        <button id="r-add">Add rule</button>
+      </div>
+      <p id="rule-message" class="message" role="status"></p>
+    </section>
+  </main>
+
+  <script type="module" src="/public/app.js"></script>
+</body>
+</html>
